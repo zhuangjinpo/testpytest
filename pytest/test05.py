@@ -1,7 +1,6 @@
 import pytest
 
 
-git add README.md
 def test_case1(login):
     print("test_case1")
 
