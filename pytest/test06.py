@@ -1,20 +1,25 @@
 import pytest
 
+# 测试账号数据
+test_user_data = [{"user": "admin1", "psw": "111111"},
+                  {"user": "admin1", "psw": "222"}]
 
 @pytest.fixture(scope="module")
-def test_addfinalizer(request):
-    # 前置操作setup
-    print("==再次打开浏览器==")
-    test = "test_addfinalizer"
-
-    def fin():
-        # 后置操作teardown
-        print("==再次关闭浏览器==")
-
-    request.addfinalizer(fin)
-    # 返回前置操作的变量
-    return test
+def login(request):
+    user = request.param["user"]
+    psw = request.param["psw"]
+    print("登录账户：%s" % user)
+    print("登录密码：%s" % psw)
 
 
-def test_anthor(test_addfinalizer):
-    print("==最新用例==", test_addfinalizer)
+# indirect=True 声明login是个函数
+@pytest.mark.parametrize("login", test_user_data, indirect=True)
+def test_login(login):
+    '''登录用例'''
+    a = login
+    print("测试用例中login的返回值:%s" % a)
+    assert a, "失败原因：密码为空"
+
+
+if __name__ == "__main__":
+    pytest.main(["-s", "test_03.py"])

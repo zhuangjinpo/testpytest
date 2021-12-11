@@ -4,6 +4,7 @@ import pytest
 def test_case1(login):
     print("test_case1")
 
+@pytest.mark.usefixtures("login")
 def test_case2():
     print("test_case2")
 
