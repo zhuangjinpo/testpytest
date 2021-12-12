@@ -1,15 +1,22 @@
 import pytest
 
+@pytest.mark.usefixtures("login")
+def test_first():
+    print("级别只运行一次1")
 
-def test_1():
-    print("tets_1")
+@pytest.mark.usefixtures("login")
+def test_second():
+    print("级别只运行一次2")
 
-def test_2():
-    print("tets_2")
+class TestCase():
+    def test_1(self,login):
+        '用例传fixture'
+        print("测试账号：1")
 
-def test_3():
-    print("tets_3")
 
+    def test_2(self,login):
+        '用例传fixture'
+        print("测试账号：2")
 
 if __name__ == '__main__':
-    pytest.main("-v -s test06.py::test_1")
+    pytest.main(["-s","test06.py"])
