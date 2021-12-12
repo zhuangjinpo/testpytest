@@ -1,4 +1,4 @@
-import pyte
+import pytest
 
 
 def test_1():
@@ -12,4 +12,4 @@ def test_3():
 
 
 if __name__ == '__main__':
-    pyte.main("-v -s test06.py::test_1")
+    pytest.main("-v -s test06.py::test_1")

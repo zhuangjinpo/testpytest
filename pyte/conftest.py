@@ -1,5 +1,5 @@
-import pyte
+import pytest
 
-@pyte.fixture()
+@pytest.fixture()
 def login():
     print("登录函数")

@@ -1,4 +1,4 @@
-import pyte
+import pytest
 
 
 def setup_module():
@@ -39,6 +39,6 @@ class TestDemo1(object):
         print("test_class")
 
 if __name__ == '__main__':
-    pyte.main()
+    pytest.main()
 
 
