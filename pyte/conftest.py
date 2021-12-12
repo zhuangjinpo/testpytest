@@ -6,4 +6,3 @@ def login():
     yield
     print("in teardown")
 
-dsf
