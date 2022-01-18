@@ -35,3 +35,6 @@ def test_5():
     print("test_5")
     assert 1==2
 
+@pytest.mark.parametrize("n",yaml.safe_load())
+def test_6():
+    print("test_6")
